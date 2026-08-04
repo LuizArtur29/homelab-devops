@@ -1,0 +1,55 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+# Ignored default folder with query files
+/queries/
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+
+# Credenciais e variáveis de ambiente
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Chaves SSH
+id_rsa
+id_rsa.pub
+id_ed25519
+id_ed25519.pub
+
+# Backups e bancos
+*.sql
+*.dump
+*.backup
+backups/
+
+# Logs
+*.log
+logs/
+
+# Arquivos temporários
+*.tmp
+*.swp
+.DS_Store
+Thumbs.db
+
+# IDEs
+.idea/
+.vscode/
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+
+# Segredos do Kubernetes
+*-secret.yaml
+*-secrets.yaml

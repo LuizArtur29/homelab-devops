@@ -1,5 +1,11 @@
 # Instalação do Debian Server
 
+> **Data:** 04/08/2026
+>
+> **Status:** ✅ Concluído
+>
+> **Versão do documento:** 1.0
+
 ## Objetivo
 
 Instalar um sistema Linux mínimo no notebook HP 1000 para utilizá-lo como servidor doméstico e laboratório DevOps.

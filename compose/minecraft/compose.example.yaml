@@ -1,0 +1,25 @@
+services:
+  minecraft:
+    image: itzg/minecraft-bedrock-server:latest
+    container_name: minecraft-bedrock
+    restart: unless-stopped
+
+    mem_limit: 2g
+
+    environment:
+      EULA: "TRUE"
+      SERVER_NAME: "Homelab Bedrock"
+      LEVEL_NAME: "realm-luiz-lolo"
+      GAMEMODE: "survival"
+      DIFFICULTY: "normal"
+      MAX_PLAYERS: "2"
+      VIEW_DISTANCE: "10"
+      TICK_DISTANCE: "4"
+      ALLOW_CHEATS: "false"
+      ONLINE_MODE: "true"
+
+    ports:
+      - "19132:19132/udp"
+
+    volumes:
+      - /srv/minecraft/data:/data

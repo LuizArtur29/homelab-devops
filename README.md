@@ -1,54 +1,76 @@
-# 🚀 Homelab DevOps
+# Homelab DevOps
 
-Projeto criado para transformar um notebook antigo em um servidor doméstico, simulando um ambiente real de infraestrutura e DevOps.
+Projeto de homelab criado a partir de um notebook antigo, com o objetivo de estudar administração de servidores Linux, redes, containers, automação e práticas de DevOps em um ambiente real.
 
-O objetivo é hospedar aplicações, automatizar deploys, aplicar boas práticas de segurança e implementar observabilidade.
+O primeiro workload implantado no servidor é um **Minecraft Bedrock Dedicated Server**, executado em Docker e acessível externamente mesmo em uma conexão residencial atrás de CGNAT.
 
 ## Hardware
 
-- Notebook: HP 1000
-- Processador: Intel Core i3 de 2ª geração
-- Memória RAM: 6 GB
-- Armazenamento: SSD de 256 GB
-- Rede: Wi-Fi e Ethernet
+| Componente | Especificação |
+|---|---|
+| Modelo | HP 1000 |
+| Processador | Intel Core i3 de 2ª geração |
+| Memória RAM | 6 GB |
+| Armazenamento | SSD |
+| Rede | Wi-Fi |
+| Arquitetura | amd64 |
 
 ## Sistema operacional
 
 - Debian 13
 - Instalação mínima
 - Sem interface gráfica
-- Acesso remoto via SSH
+- SSH Server
+- Standard system utilities
 
-## Status atual
+O servidor é administrado remotamente via SSH.
 
-- [x] Instalação do Debian Server
-- [x] Configuração do hostname
-- [x] Criação de usuário administrativo
-- [x] Instalação do servidor SSH
-- [x] Acesso remoto pela rede local
-- [ ] Atualização e configuração inicial
-- [ ] Segurança do servidor
-- [ ] Docker
-- [ ] Docker Compose
-- [ ] Deploy de aplicações
-- [ ] CI/CD
-- [ ] Observabilidade
-- [ ] Cloudflare Tunnel
-- [ ] Kubernetes com K3s
-- [ ] GitOps com ArgoCD
+## Objetivos
 
-## Arquitetura planejada
+Este projeto foi criado como laboratório para estudar e praticar:
+
+- Linux Server
+- SSH
+- gerenciamento de serviços com systemd
+- segurança básica de servidores
+- redes
+- Docker
+- Docker Compose
+- persistência de dados
+- exposição de serviços através de CGNAT
+- DNS
+- troubleshooting
+- automação de backups
+- disaster recovery
+- documentação de infraestrutura
+
+## Arquitetura
 
 ```text
-Internet
-   |
-Cloudflare Tunnel
-   |
-Reverse Proxy
-   |
-Docker
-├── Aplicações
-├── PostgreSQL
-├── MinIO
-├── Portainer
-└── Observabilidade
+                         Internet
+                            │
+                            ▼
+                       playit.gg
+                            │
+                       túnel UDP
+                            │
+                            ▼
+                  ┌──────────────────┐
+                  │     HP 1000      │
+                  │    Debian 13     │
+                  │                  │
+                  │   Docker Engine  │
+                  └────────┬─────────┘
+                           │
+                           ▼
+                Minecraft Bedrock
+                    UDP :19132
+                           │
+                           ▼
+                   Mundo persistente
+                 /srv/minecraft/data
+
+                           │
+                           ▼
+                  Backup automático
+               /srv/minecraft/backups
